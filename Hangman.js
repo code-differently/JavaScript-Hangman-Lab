@@ -37,25 +37,21 @@ class Hangman {
     }
 
     isMessageSolved(){
-        if (this.display.substring(0, this.display.length-1) === this.word) {
+        if (this.display === this.word) {
             return true;
         }
         return false;
     }
-//*Note: Any additional functions you write should be unit tested*
+
     createInitialDisplay(){
         for (let i=0; i<this.word.length; i++) {
             if (this.word[i] == " ") {
                 this.display += " ";
             } else {
-                this.display += "_";
+                this.display += "*";
             }
         }
-        this.display += "\n";
-    }
-
-    getWord() {
-        return this.word;
+        // this.display += "\n";
     }
 
 }

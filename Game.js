@@ -5,7 +5,8 @@ readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 
 
-let hangman = new Hangman('Code Differently');
+// let hangman = new Hangman('Code Differently');
+let hangman = new Hangman('Add');
 
 console.log(`Remaining Guesses: ${hangman.getRemainingGuesses()}`);
 console.log(hangman.getDisplayMessage());
