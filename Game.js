@@ -4,7 +4,8 @@ const Hangman = require('./Hangman');
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 
-let hangman = new Hangman("Code Differently");
+
+let hangman = new Hangman('Code Differently');
 
 console.log(`Remaining Guesses: ${hangman.getRemainingGuesses()}`);
 console.log(hangman.getDisplayMessage());
@@ -21,7 +22,7 @@ process.stdin.on('keypress', (str, key) => {
         console.log(`${str}\n`);
 
         if(hangman.isMessageSolved()){
-            console.log(`You won! The hidden message was ${hangman.getDisplayMessage()}`);
+            console.log(`You won! The hidden message was ${hangman.getWord()}`);
             process.exit();
         }
 
@@ -32,7 +33,7 @@ process.stdin.on('keypress', (str, key) => {
         }
 
         else{
-            console.log(`Game Over! The hidden message was ${hangman.getDisplayMessage()}`);
+            console.log(`Game Over! The hidden message was ${hangman.getWord()}`);
             process.exit();
         }
     }
