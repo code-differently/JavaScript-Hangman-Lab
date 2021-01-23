@@ -6,9 +6,16 @@ class Hangman {
        this.guessedLetter = [];
     }
     getDisplayMessage(){
-        
-        return this.word.split('').map(i => i == " " ? " ":"*").join('');
-        
+        const wordSeperatedBySpace = this.word.split(" ");
+        return wordSeperatedBySpace
+              .map((wordInPhrase) => {
+                return wordInPhrase
+                  .split("")
+                  .map((letter) => { return this.guessedLetter.includes(letter.toLowerCase()) ? letter : "*";})
+                  .join("");
+              })
+              .join(" ");
+    
     }
 
     guessLetter(letter){
