@@ -1,17 +1,31 @@
 
 class Hangman {
-
+    constructor (word){
+       this.word = word;
+       this.counter = 6;
+       this.guessedLetter = [];
+    }
     getDisplayMessage(){
-        return null;
+        
+        return this.word.split('').map(i => i == " " ? " ":"*").join('');
+        
     }
 
-    guessLetter(letter){}
+    guessLetter(letter){
+        if(this.word.split('').map(i => i.toLowerCase()).includes(letter.toLowerCase())){
+            this.guessedLetter.push(letter);
 
+        }
+        else {
+            this.counter --;    
+        }
+    }
     getRemainingGuesses(){
-        return -1;
+        return this.counter;
     }
 
     isMessageSolved(){
+
         return false;
     }
 
