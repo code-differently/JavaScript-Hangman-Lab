@@ -1,14 +1,32 @@
 
 class Hangman {
 
-    getDisplayMessage(){
-        return null;
+    constructor(phrase){
+        this.phrase = phrase;
+        this.guesses = 6;
+        this.message = [];
+        this.lettersGuess = [];
     }
 
-    guessLetter(letter){}
+    getDisplayMessage(){
+        return this.phrase;
+    }
+
+    guessLetter(letter){  
+        var count = 0;
+        for (var i = 0; i < this.phrase.length; i++) {
+                if(letter.toLowerCase() == this.phrase[i].toLowerCase()) {
+                    count ++;
+                } 
+            }
+            if (count == 0){
+                this.guesses --;
+            }
+    }
 
     getRemainingGuesses(){
-        return -1;
+        
+        return this.guesses;
     }
 
     isMessageSolved(){
