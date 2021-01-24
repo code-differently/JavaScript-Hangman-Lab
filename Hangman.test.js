@@ -112,3 +112,12 @@ test("Test is messaged solve when not solved", () => {
     expect(actual).toEqual(expected);
 
 })
+
+test("Creates accurate display", () => {
+    //as the function is used in getDisplayMessage, test is essentially the same
+    let hangman = new Hangman("New");
+    let actual = hangman.display;
+
+    let expected = "***";
+    expect(actual).toEqual(expected);
+})
