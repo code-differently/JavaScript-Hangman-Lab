@@ -9,7 +9,11 @@ class Hangman {
     }
 
     getDisplayMessage(){
-        return this.phrase;
+        const regex = /\S/g;
+        let displayMessage = this.phrase.replace(regex, '*');
+        return displayMessage;
+    }
+
     }
 
     guessLetter(letter){  
