@@ -6,6 +6,7 @@ class Hangman {
        this.guessedLetter = [];
     }
     getDisplayMessage(){
+
         const wordSeperatedBySpace = this.word.split(" ");
         return wordSeperatedBySpace
               .map((wordInPhrase) => {
@@ -15,7 +16,7 @@ class Hangman {
                   .join("");
               })
               .join(" ");
-    
+           
     }
 
     guessLetter(letter){
@@ -32,8 +33,9 @@ class Hangman {
     }
 
     isMessageSolved(){
-
-        return false;
+        const currentMessage = this.getDisplayMessage().split('');
+        return currentMessage.every(letter => {return letter == "*" ? false:true});
+        
     }
 
 }
