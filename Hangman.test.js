@@ -78,7 +78,7 @@ test("Test get display message after incorrect guess", () => {
 
 })
 
-test("Test is messaged solve when solved", () => {
+test("Test if message solved when solved", () => {
 
     // Given
     let hangman = new Hangman("Add");
@@ -95,7 +95,7 @@ test("Test is messaged solve when solved", () => {
 
 })
 
-test("Test is messaged solve when not solved", () => {
+test("Test if messaged solved when not solved", () => {
 
     // Given
     let hangman = new Hangman("Code Differently");
