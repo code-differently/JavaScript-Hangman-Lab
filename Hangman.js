@@ -70,7 +70,64 @@ class Hangman {
     }
 
     printHangman(){ //this function will print out the hangman depending on the number of incorrect guesses
-        //
+        // statements ARE dependent on max guesses allotted being 6 but if you allow more guesses, you'll likely want a more elaborate hangman figure
+        if (this.guesses == 6) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |         ");
+            console.log(" |         ");
+            console.log(" |         ");
+            console.log(" |         ");
+            console.log("_|_");
+        } else if (this.guesses == 5) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |        O");
+            console.log(" |         ");
+            console.log(" |         ");
+            console.log(" |         ");
+            console.log("_|_");
+        } else if (this.guesses == 4) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |        O");
+            console.log(" |        |");
+            console.log(" |        |");
+            console.log(" |         ");
+            console.log("_|_");
+        } else if (this.guesses == 3) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |        O");
+            console.log(" |        |/");
+            console.log(" |        |");
+            console.log(" |         ");
+            console.log("_|_");
+        } else if (this.guesses == 2) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |        O");
+            console.log(" |       \\|/");
+            console.log(" |        |");
+            console.log(" |         ");
+            console.log("_|_");
+        }  else if (this.guesses == 1) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |        O");
+            console.log(" |       \\|/");
+            console.log(" |        |");
+            console.log(" |         \\");
+            console.log("_|_");
+        }   else if (this.guesses == 0) {
+            console.log("  ________");
+            console.log(" |        |");
+            console.log(" |        O");
+            console.log(" |       \\|/");
+            console.log(" |        |");
+            console.log(" |       / \\");
+            console.log("_|_");
+        }
     }
 
 }
