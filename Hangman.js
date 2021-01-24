@@ -3,25 +3,29 @@ class Hangman {
     constructor (word) {
         this.word = word;
         this.guesses = 6;
-        this.display = "";
+        this.display = [];
         this.createInitialDisplay();
         this.lettersGuessed = [];
     }
 
     getDisplayMessage(){
-        return this.display;
+        let display = "";
+        for (let i=0; i<this.display.length; i++) {
+            display += `${this.display[i]} `;
+        }
+        return display;
     }
 
     guessLetter(letter){
         if (this.lettersGuessed.includes(letter)) {
-            console.log("Letter was already guessed.");
+            console.log(`'${letter}' was already guessed.`);
         } else {
             let inWord = false;
             for (let i=0; i<this.word.length; i++) {
                 if (this.word[i].toLowerCase() == letter.toLowerCase()) { // accounts for capitals
                     inWord = true;
-                    this.display = this.display.substring(0, i) + this.word[i] + this.display.substring(i+1, this.display.length);
-                }
+                    this.display[i] = this.word[i];
+                } 
             }
             if (inWord == false) {
                 this.guesses--;
@@ -37,7 +41,11 @@ class Hangman {
     }
 
     isMessageSolved(){
-        if (this.display === this.word) {
+        let display = "";
+        for (let i=0; i<this.display.length; i++) {
+            display += this.display[i];
+        }
+        if (display === this.word) {
             return true;
         }
         return false;
@@ -46,12 +54,23 @@ class Hangman {
     createInitialDisplay(){
         for (let i=0; i<this.word.length; i++) {
             if (this.word[i] == " ") {
-                this.display += " ";
+                this.display.push(" ");
             } else {
-                this.display += "*";
+                this.display.push("_");
             }
         }
-        // this.display += "\n";
+    }
+    
+    printGuessedLetters(){
+        let letters = "";
+        for (let i=0; i<this.lettersGuessed.length; i++) {
+            letters += this.lettersGuessed[i] + " ";
+        }
+        console.log(`Guessed Letters: ${letters}`);
+    }
+
+    printHangman(){ //this function will print out the hangman depending on the number of incorrect guesses
+        //
     }
 
 }
