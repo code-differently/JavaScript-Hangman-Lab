@@ -4,7 +4,8 @@ const Hangman = require('./Hangman');
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 
-let hangman = new Hangman("Code Differently");
+let hangman = new Hangman("Some other random string");
+console.log(hangman.phrase) // Code Differently
 
 console.log(`Remaining Guesses: ${hangman.getRemainingGuesses()}`);
 console.log(hangman.getDisplayMessage());
