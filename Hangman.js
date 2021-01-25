@@ -1,18 +1,42 @@
 
 class Hangman {
-
+    constructor (word){
+        
+       this.word = word;
+       this.counter = 6;
+       this.guessedLetter = [];
+    }
     getDisplayMessage(){
-        return null;
+
+            const wordSeperatedBySpace = this.word.split(" ");
+            return this.getRemainingGuesses() ?  wordSeperatedBySpace
+                .map((wordInPhrase) => {
+                    return wordInPhrase
+                    .split("")
+                    .map((letter) => { return this.guessedLetter.includes(letter.toLowerCase()) ? letter : "*";})
+                    .join("");
+                })
+                .join(" ") : this.word;
+          
     }
 
-    guessLetter(letter){}
+    guessLetter(letter){
+        if(this.word.split('').map(i => i.toLowerCase()).includes(letter.toLowerCase())){
+            this.guessedLetter.push(letter);
 
+        }
+        else {
+            this.counter --;    
+        }
+    }
     getRemainingGuesses(){
-        return -1;
+        return this.counter;
     }
 
     isMessageSolved(){
-        return false;
+        const currentMessage = this.getDisplayMessage().split('');
+        return currentMessage.every(letter => {return letter == "*" ? false:true});
+        
     }
 
 }

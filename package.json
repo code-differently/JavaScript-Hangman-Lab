@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/code-differently/JavaScript-Hangman-Lab/issues"
   },
-  "homepage": "https://github.com/code-differently/JavaScript-Hangman-Lab#readme"
+  "homepage": "https://github.com/code-differently/JavaScript-Hangman-Lab#readme",
+  "dependencies": {
+    "all": "0.0.0",
+    "jest": "^26.6.3"
+  }
 }

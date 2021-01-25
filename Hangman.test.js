@@ -9,7 +9,7 @@ test("Test guess of letter", () => {
         // When
         hangman.guessLetter("c");
         let actual = hangman.getRemainingGuesses();
-
+        console.log({actual})
         //Then
         let expected = 6;
         expect(actual).toEqual(expected);
