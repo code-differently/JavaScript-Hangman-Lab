@@ -1,20 +1,48 @@
-
 class Hangman {
-
+   
+    constructor(phrase) {
+        this.phrase = phrase;
+        this.guesses = 6;
+        this.message = [];
+        this.lettersGuess = [];
+        this.letter = [];
+    }
+   
     getDisplayMessage(){
-        return null;
+        const regex = /\S/g;
+        let displayMessage = this.phrase.replace(regex, '*');
+        let position = this.phrase.search(this.letter);
+        
+         
+        return displayMessage;
     }
 
-    guessLetter(letter){}
+
+         guessLetter(letter){
+        var count = 0;
+        this.letter = letter
+        for (var i = 0; i < this.phrase.length; i++) {
+            if (letter.toLowerCase() == this.phrase[i].toLowerCase()) {
+                count ++;
+                this.lettersGuess += letter;
+                 }
+            }
+            if (count == 0){
+                this.guesses --;
+            }
+        }
+
 
     getRemainingGuesses(){
-        return -1;
+        return this.guesses;
     }
 
     isMessageSolved(){
+
+       
         return false;
     }
-
 }
+
 
 module.exports = Hangman;
