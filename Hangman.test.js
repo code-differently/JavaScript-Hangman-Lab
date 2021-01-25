@@ -1,7 +1,7 @@
 
 const Hangman = require('./Hangman');
 
-test("Test guess of letter", () => {
+test("Test correct guess of letter", () => {
 
         // Given
         let hangman = new Hangman("Code Differently");
@@ -35,7 +35,6 @@ test("Test get display message on new game", () => {
 
     // Given
     let hangman = new Hangman("Code Differently");
-    
 
     // When
     let actual = hangman.getDisplayMessage();
