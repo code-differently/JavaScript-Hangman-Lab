@@ -6,29 +6,34 @@ class Hangman {
         this.guesses = 6;
         this.message = [];
         this.lettersGuess = [];
+        this.letter = [];
     }
 
     getDisplayMessage(){
-        const regex = /\s/g;
+        const regex = /\S/g;
         let displayMessage = this.phrase.replace(regex, '*');
+        let position = this.phrase.search(this.letter);
+        console.log(position);
+
         return displayMessage;
     }
 
     guessLetter(letter){
         var count = 0;
+        this.letter = letter;
         for (var i = 0; i < this.phrase.length; i++) {
             if (letter.toLowerCase() == this.phrase[i].toLowerCase()) {
                 count ++;
                 this.lettersGuess += letter;
-                console.log(this.lettersGuess);
             }
-    }
-    if (count == 0){
-        this.lettersGuess--;
+            }
+            if (count == 0){
+                this.guesses --;
+            }
     }
 
     getRemainingGuesses(){
-        return -1;
+        return this.guesses;
     }
 
     isMessageSolved(){
