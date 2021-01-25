@@ -1,11 +1,31 @@
 
 class Hangman {
 
-    getDisplayMessage(){
-        return null;
+    constructor(phrase) {
+        this.phrase = phrase;
+        this.guesses = 6;
+        this.message = [];
+        this.lettersGuess = [];
     }
 
-    guessLetter(letter){}
+    getDisplayMessage(){
+        const regex = /\s/g;
+        let displayMessage = this.phrase.replace(regex, '*');
+        return displayMessage;
+    }
+
+    guessLetter(letter){
+        var count = 0;
+        for (var i = 0; i < this.phrase.length; i++) {
+            if (letter.toLowerCase() == this.phrase[i].toLowerCase()) {
+                count ++;
+                this.lettersGuess += letter;
+                console.log(this.lettersGuess);
+            }
+    }
+    if (count == 0){
+        this.lettersGuess--;
+    }
 
     getRemainingGuesses(){
         return -1;
