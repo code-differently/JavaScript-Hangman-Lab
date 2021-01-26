@@ -1,96 +1,47 @@
 
 class Hangman {
-     
-    constructor(phrase) {
-          this.phrase =  phrase;
-          this.guesses = 6;
-          this.message = [];
-          this.lettersGuess = [];
-         // create another variable using the this keyword for the current number of guesees, should be starting with 6 guesses.
-     }
-    getDisplayMessage(){
-        //return the current guess (i.e.___e ***e*)
-        const regex = /\S/g;
-        let displayMessage = this.phrase.replace(regex, '*');  
-        for (let i = 0; i < this.phrase.length; i++) {
-              if (this.phrase.includes(this.lettersGuess)) {
-                  displayMessage[i] = this.lettersGuess[this.lettersGuess.length -1];
-         }  
-           
-      }
-             
-             return displayMessage;
-        
-    
-    }
-
-    guessLetter(letter){
-      var count = 0;
-      for (var i = 0; i < this.phrase.length; i++) {
-                    if (letter.toLowerCase() == this.phrase[i].toLowerCase()) {
-                         count ++;
-                        this.lettersGuess += letter;
-                        
-
-                      } 
-                         
-          }
-          if (count == 0 ) {
-               this.guesses --;
-            }
-    }
-    getRemainingGuesses(){
-        
-        return this.guesses;
-    }
-   
-    isMessageSolved(){
-        return false;
-       
-    }
-
-}
-
-/* updated code 
-class Hangman {
     constructor(phrase){
         this.phrase = phrase;
         this.guesses = 6;
-        this.message = [];
-        this.lettersGuess = [];
-        this.letter = [];
+        this.letterGuess = [];
     }
 
     getDisplayMessage(){
-        const regex = /\S/g;
-        let displayMessage = this.phrase.replace(regex, '*');
-        return displayMessage;
-    }
-        let position = this.phrase.search(this.letter);
-            console.log(position);
+    const splitWords = this.phrase.split(" ");
+    return this.getRemainingGuesses() ?  splitWords
+        .map((wordInPhrase) => {
+            return wordInPhrase
+            .split("")
+            .map((letter) => { return this.letterGuess.includes(letter.toLowerCase()) ? letter : "*";})
+            .join("");
+        })
+        .join(" ") : this.phrase;
+      
+}
 
-        return displayMessage;
-    }
-
-    guessLetter(letter){  
+guessLetter(letter){  
         var count = 0;
         this.letter = letter;
         for (var i = 0; i < this.phrase.length; i++) {
                 if(letter.toLowerCase() == this.phrase[i].toLowerCase()) {
                     count ++;
-                    this.lettersGuess += letter;
+                    this.letterGuess += letter;
                 } 
             }
             if (count == 0){
                 this.guesses --;
             }
     }
+
     getRemainingGuesses(){
-        
         return this.guesses;
     }
+
     isMessageSolved(){
-        return false;
+        const currentMessage = this.getDisplayMessage().split('');
+        return currentMessage.every(letter => {return letter == "*" ? false:true});
     }
+
 }
+
 module.exports = Hangman;
