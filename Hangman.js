@@ -9,23 +9,30 @@ class Hangman {
   }
 
   getDisplayMessage() {
-    let displayMessage = this.phrase.replace(/\S/g, "*");
-    let position = this.phrase.search(this.letter);
-    console.log(position);
-
+    const lowerCasePhraseAsArray = this.phrase
+      .split("")
+      .map((l) => l.toLowerCase());
+    let displayMessage = "";
+    for (let i = 0; i < lowerCasePhraseAsArray.length; i++) {
+      if (this.lettersGuess.includes(lowerCasePhraseAsArray[i])) {
+        displayMessage += this.phrase[i];
+      } else if (lowerCasePhraseAsArray[i] == " ") {
+        displayMessage += " ";
+      } else {
+        displayMessage += "*";
+      }
+    }
     return displayMessage;
   }
 
   guessLetter(letter) {
-    let countLetter = 0;
-    this.letter = letter;
-    for (let i = 0; i < this.phrase.length; i++) {
-      if (letter.toLowerCase() == this.phrase[i].toLowerCase()) {
-        this.lettersGuess += letter;
-        countLetter++;
-      }
-    }
-    if (countLetter == 0) {
+    const lowerCaseLetter = letter.toLowerCase();
+    const lowerCasePhraseAsArray = this.phrase
+      .split("")
+      .map((l) => l.toLowerCase());
+    if (lowerCasePhraseAsArray.includes(lowerCaseLetter)) {
+      this.lettersGuess.push(lowerCaseLetter);
+    } else {
       this.guesses--;
     }
   }
@@ -35,7 +42,13 @@ class Hangman {
   }
 
   isMessageSolved() {
-    return false;
+    return this.getDisplayMessage()
+      .split("")
+      .every((char) => char !== "*");
+  }
+
+  getPhrase() {
+    return this.phrase;
   }
 }
 
