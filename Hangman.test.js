@@ -95,7 +95,7 @@ test("Test is messaged solve when solved", () => {
 
 })
 
-test("Test is messaged solve when not solved", () => {
+test("Test if messaged solve when not solved", () => {
 
     // Given
     let hangman = new Hangman("Code Differently");
